@@ -1,16 +1,29 @@
-using ToTheHeights;
 using UnityEngine;
 
-public class WithdrawTrigger : MonoBehaviour
+namespace ToTheHeights
 {
-    private void OnTriggerEnter2D(Collider2D other)
+    public class WithdrawTrigger : MonoBehaviour
     {
-        var obj = other.TryGetComponent(out ObjectSpawnStatus status);
-        if (status.IsReturnToPool)
-        {
-            //todo return to pool
-        }
+        private Vector3 _startPos;
 
-        other.gameObject.SetActive(false);
+        [SerializeField] private Vector3 _dangerStartPosition;
+
+        private void Start()
+        {
+            _startPos = transform.position.normalized;
+        }
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            var obj = other.TryGetComponent(out ObjectSpawnStatus status);
+            if (status.IsReturnToPool)
+            {
+                other.transform.position = _dangerStartPosition;
+                other.gameObject.SetActive(false);
+                other.gameObject.SetActive(true);
+            }
+
+            else 
+                other.gameObject.SetActive(false);
+        }
     }
 }
