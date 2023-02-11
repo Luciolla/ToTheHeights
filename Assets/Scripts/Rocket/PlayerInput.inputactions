@@ -50,6 +50,34 @@
                     "isPartOfComposite": true
                 }
             ]
+        },
+        {
+            "name": "Другое утравление",
+            "id": "f28e8b65-e884-403c-a38d-a6ade39e8cf2",
+            "actions": [
+                {
+                    "name": "New action",
+                    "type": "Button",
+                    "id": "4e9193fb-c612-4aa3-ae46-a05fc0285a67",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "648d82b6-a1f9-4af1-8493-6cc0473600ad",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "New action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []
