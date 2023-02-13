@@ -40,8 +40,9 @@ namespace ToTheHeights
         }
 
         //todo separate to another class
-        private void StartFlight()
+        private void StartFlight() //todo fix constants
         {
+            if (Time.timeScale < 1f) return;
             _currentHeight += _currentSpeed/10;
             _currentSpeed += 0.01f;
         }

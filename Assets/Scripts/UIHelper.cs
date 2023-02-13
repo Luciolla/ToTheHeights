@@ -4,6 +4,8 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+//using Image = UnityEngine.UI.Image;
+
 namespace ToTheHeights
 {
     public class UIHelper : MonoBehaviour
@@ -11,10 +13,12 @@ namespace ToTheHeights
         private int _currentLifeCountView = 2;
         private float _currentHeight = 1f;
         private float _currentSpeed = 0f;
+        private bool isMenuActive = false;
 
         [SerializeField] private TMP_Text _heightText;
         [SerializeField] private TMP_Text _speedText;
         [SerializeField] private List<Image> _lifeImages;
+        [SerializeField] private GameObject _menuPanel;
 
         public static UIHelper instance { get; set; }
         public int SetCurrentLifeCountView
@@ -41,8 +45,23 @@ namespace ToTheHeights
         private void Update()
         {
             _speedText.text = System.MathF.Round(_currentSpeed, 2).ToString();
-            Debug.Log(_currentSpeed + " " + _currentHeight);
             _heightText.text = System.MathF.Round(_currentHeight, 2).ToString();
+        }
+
+        public void OpenSettings()
+        {
+            isMenuActive = !isMenuActive;
+            _menuPanel.gameObject.SetActive(isMenuActive);
+
+            var timeStop = isMenuActive ? Time.timeScale = 0.00001f : Time.timeScale = 1f;
+        }
+
+        public void ExitGame()
+        {
+#if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+#endif
+            Application.Quit();
         }
 
         private IEnumerator UIRelevanceCheckerRutine()
