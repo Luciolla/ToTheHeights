@@ -18,7 +18,7 @@ namespace ToTheHeights
         {
             TryGetComponent(out TMP_Text CounterText);
 
-            //чисто ради смеха попробовать хваленый DoTween :D
+            //just4fun - DoTween :D
             while (time >= 0)
             {
                 CounterText.text = time.ToString();

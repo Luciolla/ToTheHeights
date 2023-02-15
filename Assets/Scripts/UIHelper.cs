@@ -2,9 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
-
-//using Image = UnityEngine.UI.Image;
+using Image = UnityEngine.UI.Image;
 
 namespace ToTheHeights
 {
@@ -44,7 +42,7 @@ namespace ToTheHeights
 
         private void Update()
         {
-            _speedText.text = System.MathF.Round(_currentSpeed, 2).ToString();
+            _speedText.text = System.MathF.Round(_currentSpeed, 1).ToString();
             _heightText.text = System.MathF.Round(_currentHeight, 2).ToString();
         }
 
@@ -70,7 +68,7 @@ namespace ToTheHeights
             {
                 yield return new WaitForSecondsRealtime(2f);
 
-                switch (_currentLifeCountView) //todo it works, but make it look nice
+                switch (_currentLifeCountView) //todo - it works, but make it look nice
                 {
                     case 0:
                         _lifeImages[_currentLifeCountView].gameObject.SetActive(false);

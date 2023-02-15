@@ -9,7 +9,7 @@ namespace ToTheHeights
         private float _sfxVolume = 1f;
         private bool _isPlayingMusic = true;
         private bool _isPlayingSFX = true;
-        private bool _isMusicPlayingNow = true;
+        private bool _isMusicPlayingNow = false;
 
         private AudioClip _currentLevelMusic;
 
@@ -30,7 +30,9 @@ namespace ToTheHeights
         }
 
         public void IsPlayingMusic() => _isPlayingMusic = !_isPlayingMusic;
+        public void IsPlayingMusicNow() => _isMusicPlayingNow = !_isMusicPlayingNow;
         public void IsPlayingSFX() => _isPlayingSFX = !_isPlayingSFX;
+
         public void SetVolume(float volume) => _sfxVolume = volume;
 
         public void PlaySound(AudioClip clip)
@@ -41,11 +43,20 @@ namespace ToTheHeights
         public void PlayMusic()
         {
             if (_isPlayingMusic) _audioSource.PlayOneShot(_currentLevelMusic);
+            _isMusicPlayingNow = true;
         }
 
         private void CheckMusicToggle() //todo fix
         {
-            if (_isPlayingMusic == false) _audioSource.Stop();
+            if (_isMusicPlayingNow && _isPlayingMusic) return;
+            if (_isMusicPlayingNow)
+            {
+                _audioSource.Stop();
+                IsPlayingMusicNow();
+            }
+
+            if (!_isMusicPlayingNow && !_isPlayingMusic) return;
+            if(!_isMusicPlayingNow) PlayMusic();
         }
     }
 }

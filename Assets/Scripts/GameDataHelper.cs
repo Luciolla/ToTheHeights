@@ -1,18 +1,25 @@
+using System;
 using UnityEngine;
 
 namespace ToTheHeights
 {
     public class GameDataHelper : MonoBehaviour
     {
-        private UIHelper _helper;
-
         private int _startLifeCount = 2;
-        private int _currentLifeCount;
-
+        private int _currentLifeCount = 2;
         private float _startSpeed = 0f;
         private float _startHeight = 15f;
         private float _currentHeight = 15f;
         private float _currentSpeed = 0f;
+
+        [SerializeField] private float _speedModif = 1.45f;
+        [SerializeField] private int _heightSpeedModif = 100;
+
+        public int SetCurrentLifeCount //todo :\
+        {
+            get { return _currentLifeCount; }
+            set { _currentLifeCount = value; }
+        }
 
         private void Start()
         {
@@ -25,7 +32,7 @@ namespace ToTheHeights
             StartFlight();
         }
 
-        private void StartGameStats()
+        private void StartGameStats()  //todo - it works, but make it look nice
         {
             _currentLifeCount = _startLifeCount;
             UIHelper.instance.SetCurrentLifeCountView = _startLifeCount;
@@ -43,8 +50,8 @@ namespace ToTheHeights
         private void StartFlight() //todo fix constants
         {
             if (Time.timeScale < 1f) return;
-            _currentHeight += _currentSpeed/10;
-            _currentSpeed += 0.01f;
+            _currentHeight += _currentSpeed/_heightSpeedModif;
+            _currentSpeed += _speedModif;
         }
     }
 }
