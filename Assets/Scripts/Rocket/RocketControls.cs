@@ -61,7 +61,6 @@ namespace ToTheHeights
             if (Input.GetMouseButton(0))
             {
                 Vector2 delta = Input.mousePosition - _lastTouchPos;
-                Debug.Log(delta);
                 _rb.velocity += new Vector2(delta.x * _sens * Time.deltaTime, 0f);
             }
             _lastTouchPos = Input.mousePosition;

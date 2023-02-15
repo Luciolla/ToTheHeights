@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Random = System.Random;
 
@@ -9,6 +6,8 @@ namespace ToTheHeights
     public class DangerRandomSystem : MonoBehaviour
     {
         private Random _random = new();
+
+        private float _gravityScaleModif = .1f;
 
         private void OnTriggerEnter2D(Collider2D other)
         {
@@ -19,6 +18,7 @@ namespace ToTheHeights
             other.TryGetComponent(out Rigidbody2D otherRigid);
             
             otherRigid.AddTorque(((qRotation * Mathf.Deg2Rad) * otherRigid.inertia), ForceMode2D.Impulse);
+            otherRigid.gravityScale += _gravityScaleModif;
         }
     }
 }
