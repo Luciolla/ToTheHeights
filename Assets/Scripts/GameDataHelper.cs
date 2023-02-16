@@ -17,8 +17,8 @@ namespace ToTheHeights
 
         public int SetCurrentLifeCount //todo :\
         {
-            get { return _currentLifeCount; }
-            set { _currentLifeCount = value; }
+            get => _currentLifeCount; 
+            set => _currentLifeCount = value;
         }
 
         private void Start()
@@ -35,15 +35,15 @@ namespace ToTheHeights
         private void StartGameStats()  //todo - it works, but make it look nice
         {
             _currentLifeCount = _startLifeCount;
-            UIHelper.instance.SetCurrentLifeCountView = _startLifeCount;
-            UIHelper.instance.SetHeight = _startHeight;
-            UIHelper.instance.SetSpeed = _startSpeed;
+            UIHelper.Instance.SetCurrentLifeCountView = _startLifeCount;
+            UIHelper.Instance.SetHeight = _startHeight;
+            UIHelper.Instance.SetSpeed = _startSpeed;
         }  
         private void UpdateGameStats()
         {
-            UIHelper.instance.SetCurrentLifeCountView = _currentLifeCount;
-            UIHelper.instance.SetHeight = _currentHeight;
-            UIHelper.instance.SetSpeed = _currentSpeed;
+            UIHelper.Instance.SetCurrentLifeCountView = _currentLifeCount;
+            UIHelper.Instance.SetHeight = _currentHeight;
+            UIHelper.Instance.SetSpeed = _currentSpeed;
         }
 
         //todo separate to another class

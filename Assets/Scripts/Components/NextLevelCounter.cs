@@ -16,12 +16,12 @@ namespace ToTheHeights
 
         private IEnumerator StartCounterRutine(float time)
         {
-            TryGetComponent(out TMP_Text CounterText);
+            TryGetComponent(out TMP_Text counter);
 
             //just4fun - DoTween :D
             while (time >= 0)
             {
-                CounterText.text = time.ToString();
+                counter.text = time.ToString();
                 DOTween.Sequence()
                     .Append(transform.DOScale(20, .6f))
                     .Append(transform.DOScale(15, .6f));

@@ -18,25 +18,25 @@ namespace ToTheHeights
         [SerializeField] private List<Image> _lifeImages;
         [SerializeField] private GameObject _menuPanel;
 
-        public static UIHelper instance { get; set; }
+        public static UIHelper Instance { get; set; }
         public int SetCurrentLifeCountView
         {
-            set { _currentLifeCountView = value; }
+            set => _currentLifeCountView = value;
         }
 
         public float SetHeight
         {
-            set { _currentHeight = value; }
+            set => _currentHeight = value;
         }
 
         public float SetSpeed
         {
-             set { _currentSpeed = value; }
+             set => _currentSpeed = value;
         }
 
         private void Start()
         {
-            instance = this;
+            Instance = this;
             StartCoroutine(UIRelevanceCheckerRutine());
         }
 
