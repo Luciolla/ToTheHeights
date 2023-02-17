@@ -25,7 +25,7 @@ namespace ToTheHeights
         {
             isInvulnerability = true;
             var time = _invulnerabilityTime;
-
+            
             while (time > 0)
             {
                 _rocketBody.SetActive(isBodyActive);
@@ -43,9 +43,13 @@ namespace ToTheHeights
         private void CheckDeathStatus(GameDataHelper helper) //todo fix this trash before endbuild
         {
             if (helper.SetCurrentLifeCount > 0)
+            {
+                EffectsPlayer.Instance.PlaySmallBlast();
                 StartCoroutine(InvulnerabilityRutine());
+            }
             else
             {
+                EffectsPlayer.Instance.PlayBigBlast();
 #if UNITY_EDITOR
                 if (Application.isEditor)
                 {

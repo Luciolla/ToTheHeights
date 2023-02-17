@@ -1471,6 +1471,7 @@ GameObject:
   - component: {fileID: 519420031}
   - component: {fileID: 519420033}
   - component: {fileID: 519420035}
+  - component: {fileID: 519420036}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1550,7 +1551,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _skybox: {fileID: 2100000, guid: 95a1069a25e2f664a9d20022c303e2d6, type: 2}
-  blend: 0
+  _skyboxList:
+  - {fileID: 2100000, guid: 95a1069a25e2f664a9d20022c303e2d6, type: 2}
+  - {fileID: 2100000, guid: c943d4a964b9fb9459a57374cecdeb93, type: 2}
+  - {fileID: 2100000, guid: b2951f4567ba1ec47a7114a2889fac5e, type: 2}
+  _blend: 0
 --- !u!114 &519420035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1565,6 +1570,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speedModif: 1.45
   _heightSpeedModif: 100
+--- !u!114 &519420036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8add5fcf506daf44882520ca8f7958d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SmallBlastPrefab: {fileID: 1279903613}
+  BigBlastPrefab: {fileID: 1925873065}
 --- !u!1 &542987236
 GameObject:
   m_ObjectHideFlags: 0
@@ -2962,7 +2981,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1027671333
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3432,6 +3451,11 @@ Transform:
 Transform:
   m_CorrespondingSourceObject: {fileID: 3577067421433720374, guid: 80eb87f91dd603547b9f65dca1e4cec9, type: 3}
   m_PrefabInstance: {fileID: 1302417201}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1279903613 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1693499307017665529, guid: 6ace0503f5f5e6e44831975f9aeed05d, type: 3}
+  m_PrefabInstance: {fileID: 3395581712642312222}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1293526857
 GameObject:
@@ -4751,6 +4775,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1897644768}
   m_CullTransparentMesh: 1
+--- !u!1 &1925873065 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2658575525158679805, guid: 6ace0503f5f5e6e44831975f9aeed05d, type: 3}
+  m_PrefabInstance: {fileID: 3395581712642312222}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1958617981
 GameObject:
   m_ObjectHideFlags: 0
@@ -5326,6 +5355,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1693499307017665529, guid: 6ace0503f5f5e6e44831975f9aeed05d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2658575525159037149, guid: 6ace0503f5f5e6e44831975f9aeed05d, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3395581711695675398, guid: 6ace0503f5f5e6e44831975f9aeed05d, type: 3}
       propertyPath: InitialModule.gravityModifier.scalar
       value: 1
