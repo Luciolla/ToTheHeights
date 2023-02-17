@@ -14,6 +14,7 @@ namespace ToTheHeights
 
         [SerializeField] private float _speedModif = 1.45f;
         [SerializeField] private int _heightSpeedModif = 100;
+        [SerializeField] private UIHelper _helper;
 
         public int SetCurrentLifeCount //todo :\
         {
@@ -35,15 +36,15 @@ namespace ToTheHeights
         private void StartGameStats()  //todo - it works, but make it look nice
         {
             _currentLifeCount = _startLifeCount;
-            UIHelper.Instance.SetCurrentLifeCountView = _startLifeCount;
-            UIHelper.Instance.SetHeight = _startHeight;
-            UIHelper.Instance.SetSpeed = _startSpeed;
+            _helper.SetCurrentLifeCountView = _startLifeCount;
+            _helper.SetHeight = _startHeight;
+            _helper.SetSpeed = _startSpeed;
         }  
         private void UpdateGameStats()
         {
-            UIHelper.Instance.SetCurrentLifeCountView = _currentLifeCount;
-            UIHelper.Instance.SetHeight = _currentHeight;
-            UIHelper.Instance.SetSpeed = _currentSpeed;
+            _helper.SetCurrentLifeCountView = _currentLifeCount;
+            _helper.SetHeight = _currentHeight;
+            _helper.SetSpeed = _currentSpeed;
         }
 
         //todo separate to another class

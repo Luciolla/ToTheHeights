@@ -1570,6 +1570,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speedModif: 1.45
   _heightSpeedModif: 100
+  _helper: {fileID: 2028520996}
 --- !u!114 &519420036
 MonoBehaviour:
   m_ObjectHideFlags: 0
