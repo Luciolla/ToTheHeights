@@ -20,23 +20,39 @@ namespace ToTheHeights
 
         private void Awake()
         {
+#if UNITY_EDITOR
             _input = new();
+#endif
             _rb = GetComponent<Rigidbody2D>();
         }
 
+#if UNITY_EDITOR
         private void Start()
         {
             StartCoroutine(SnakeMotionCoroutine());
         }
-
+#endif
         private void FixedUpdate()
         {
             CheckTouchToMove();
         }
 
+
+#if UNITY_EDITOR
+        #region EditorControls
         private void OnEnable()
         {
             _input.EditorInput.Enable();
+        }
+
+        private void OnDisable()
+        {
+            _input.Disable();
+        }
+
+        private void OnDestroy()
+        {
+            _input.Dispose();
         }
 
         private IEnumerator SnakeMotionCoroutine()
@@ -55,6 +71,8 @@ namespace ToTheHeights
                 yield return new WaitForFixedUpdate();
             }
         }
+        #endregion
+#endif
 
         private void CheckTouchToMove()
         {
@@ -64,16 +82,6 @@ namespace ToTheHeights
                 _rb.velocity += new Vector2(delta.x * _sens * Time.deltaTime, 0f);
             }
             _lastTouchPos = Input.mousePosition;
-        }
-
-        private void OnDisable()
-        {
-            _input.Disable();
-        }
-
-        private void OnDestroy()
-        {
-            _input.Dispose();
         }
     }
 }

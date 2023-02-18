@@ -3,6 +3,7 @@ using System.Collections;
 
 namespace ToTheHeights
 {
+    [RequireComponent(typeof(CapsuleCollider2D))]
     public class LifeLoss : MonoBehaviour
     {
         private bool isInvulnerability = false;
@@ -50,18 +51,8 @@ namespace ToTheHeights
             else
             {
                 EffectsPlayer.Instance.PlayBigBlast();
-#if UNITY_EDITOR
-                if (Application.isEditor)
-                {
-                    UnityEditor.EditorApplication.isPlaying = false;
-                }
-                else
-                {
-#endif
-                    Application.Quit();
-#if UNITY_EDITOR
-                }
-#endif
+                StartCoroutine(InvulnerabilityRutine());
+                UIHelper.Instance.OpenDeathPanel();
             }
         }
     }

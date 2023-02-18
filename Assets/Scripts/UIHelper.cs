@@ -11,12 +11,17 @@ namespace ToTheHeights
         private int _currentLifeCountView = 2;
         private float _currentHeight = 1f;
         private float _currentSpeed = 0f;
-        private bool isMenuActive = false;
+        private bool _isMenuActive = false;
+        private bool _isDeathMenuActive = false;
+
+        [Header("Список меню")]
+        [SerializeField] private List<GameObject> _menuList = new();
 
         [SerializeField] private TMP_Text _heightText;
         [SerializeField] private TMP_Text _speedText;
         [SerializeField] private List<Image> _lifeImages;
-        [SerializeField] private GameObject _menuPanel;
+
+        public static UIHelper Instance { get; private set; }
 
         public int SetCurrentLifeCountView
         {
@@ -35,6 +40,7 @@ namespace ToTheHeights
 
         private void Start()
         {
+            Instance = this;
             StartCoroutine(UIRelevanceCheckerRutine());
         }
 
@@ -46,10 +52,26 @@ namespace ToTheHeights
 
         public void OpenSettings()
         {
-            isMenuActive = !isMenuActive;
-            _menuPanel.gameObject.SetActive(isMenuActive);
+            OpenCloseMenu(_menuList[0], _isMenuActive);
+            _isMenuActive = !_isMenuActive;
+        }
 
-            var timeStop = isMenuActive ? Time.timeScale = 0.00001f : Time.timeScale = 1f;
+        public void OpenDeathPanel()
+        {
+            OpenCloseMenu(_menuList[2], _isDeathMenuActive);
+            _isDeathMenuActive = !_isDeathMenuActive;
+        }
+
+        private void OpenCloseMenu(GameObject obj, bool activity)
+        {
+            obj.gameObject.SetActive(!activity);
+
+            var timeStop = !activity ? Time.timeScale = 0.00001f : Time.timeScale = 1f;
+        }
+
+        public void CloseTutorPanel()
+        {
+            _menuList[1].gameObject.SetActive(false);
         }
 
         public void ExitGame()
