@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 namespace ToTheHeights
@@ -12,8 +11,8 @@ namespace ToTheHeights
         private float _currentHeight = 15f;
         private float _currentSpeed = 0f;
 
-        [SerializeField] private float _speedModif = 1.45f;
-        [SerializeField] private int _heightSpeedModif = 100;
+        [SerializeField] private float _speedModif = 1.47f;
+        [SerializeField] private int _heightSpeedModif = 150;
         [SerializeField] private UIHelper _helper;
 
         public int SetCurrentLifeCount //todo :\

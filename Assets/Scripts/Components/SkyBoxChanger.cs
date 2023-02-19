@@ -6,8 +6,9 @@ namespace ToTheHeights
 {
     public class SkyBoxChanger : MonoBehaviour
     {
+        private int blendModif = 0;
         private float _waitTime = 1f;
-        private float []_blendSpeed = { .006f, .004f, .0032f };
+        private float[] _blendSpeed = { .006f, .004f, .0032f };
 
         [SerializeField] private Material _skybox;
         [SerializeField] private List<Material> _skyboxList;
@@ -32,18 +33,17 @@ namespace ToTheHeights
 
         private IEnumerator BlendSkybox()
         {
-            var blendModif = 0;
-
             while (true)
             {
                 _blend += _blendSpeed[blendModif];
                 yield return new WaitForSecondsRealtime(_waitTime);
-                if (_blend == 1f)
+                if (_blend >= 1f)
                 {
                     blendModif++;
                     _skybox = _skyboxList[blendModif];
                     RenderSettings.skybox = _skybox;
                     _blend = 0f;
+                    AudioHelper.StageIndex++;
                 }
             }
         }

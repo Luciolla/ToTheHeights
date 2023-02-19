@@ -17,9 +17,11 @@ namespace ToTheHeights
         [SerializeField] private List<AudioClip> _audioSFXList;
         [SerializeField] private List<AudioClip> _musicList;
 
+        public static int StageIndex = 0;
+
         private void Start()
         {
-            _currentLevelMusic = _musicList[SceneManager.GetActiveScene().buildIndex];
+            _currentLevelMusic = _musicList[StageIndex]; //_musicList[SceneManager.GetActiveScene().buildIndex];
             PlayMusic();
         }
 
@@ -27,6 +29,7 @@ namespace ToTheHeights
         {
             _audioSource.volume = _sfxVolume;
             CheckMusicToggle();
+            CheckCurrentMusicIndex();
         }
 
         public void IsPlayingMusic() => _isPlayingMusic = !_isPlayingMusic;
@@ -56,7 +59,14 @@ namespace ToTheHeights
             }
 
             if (!_isMusicPlayingNow && !_isPlayingMusic) return;
-            if(!_isMusicPlayingNow) PlayMusic();
+            if (!_isMusicPlayingNow) PlayMusic();
+        }
+
+        private void CheckCurrentMusicIndex()
+        {
+            if (_audioSource.isPlaying) return;
+                _currentLevelMusic = _musicList[StageIndex];
+                PlayMusic();
         }
     }
 }
