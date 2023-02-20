@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace ToTheHeights
 {
@@ -17,10 +16,14 @@ namespace ToTheHeights
         [SerializeField] private List<AudioClip> _audioSFXList;
         [SerializeField] private List<AudioClip> _musicList;
 
+        public static AudioHelper Instance { get; private set; }
+        public IList<AudioClip> GetSFTList => _audioSFXList;
+
         public static int StageIndex = 0;
 
         private void Start()
         {
+            Instance = this;
             _currentLevelMusic = _musicList[StageIndex]; //_musicList[SceneManager.GetActiveScene().buildIndex];
             PlayMusic();
         }

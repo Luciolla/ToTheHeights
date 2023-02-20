@@ -46,8 +46,8 @@ namespace ToTheHeights
 
         private void Update()
         {
-            _speedText.text = System.MathF.Round(_currentSpeed, 1).ToString();
-            _heightText.text = System.MathF.Round(_currentHeight, 2).ToString();
+            _speedText.text = System.MathF.Round(_currentSpeed, 1).ToString() + " m/s";
+            _heightText.text = System.MathF.Round(_currentHeight, 2).ToString() + " m";
         }
 
         public void OpenSettings()

@@ -46,11 +46,13 @@ namespace ToTheHeights
             if (helper.SetCurrentLifeCount > 0)
             {
                 EffectsPlayer.Instance.PlaySmallBlast();
+                AudioHelper.Instance.PlaySound(AudioHelper.Instance.GetSFTList[3]);
                 StartCoroutine(InvulnerabilityRutine());
             }
             else
             {
                 EffectsPlayer.Instance.PlayBigBlast();
+                AudioHelper.Instance.PlaySound(AudioHelper.Instance.GetSFTList[3]);
                 StartCoroutine(InvulnerabilityRutine());
                 UIHelper.Instance.OpenDeathPanel();
             }
