@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Image = UnityEngine.UI.Image;
 
 namespace ToTheHeights
@@ -72,6 +73,14 @@ namespace ToTheHeights
         public void CloseTutorPanel()
         {
             _menuList[1].gameObject.SetActive(false);
+        }
+
+        public void RestartGame()
+        {
+            Time.timeScale = 1f;
+            CloseTutorPanel();
+            
+            SceneManager.LoadScene(sceneBuildIndex: SceneManager.GetActiveScene().buildIndex);
         }
 
         public void ExitGame()

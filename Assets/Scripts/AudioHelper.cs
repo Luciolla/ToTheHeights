@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace ToTheHeights
 {
@@ -24,7 +25,7 @@ namespace ToTheHeights
         private void Start()
         {
             Instance = this;
-            _currentLevelMusic = _musicList[StageIndex]; //_musicList[SceneManager.GetActiveScene().buildIndex];
+            _currentLevelMusic = _musicList[StageIndex];
             PlayMusic();
         }
 
