@@ -6,16 +6,16 @@ namespace ToTheHeights
 {
     public class AudioHelper : MonoBehaviour
     {
+        [SerializeField] private AudioSource _audioSource;
+        [SerializeField] private List<AudioClip> _audioSFXList;
+        [SerializeField] private List<AudioClip> _musicList;
+
         private float _sfxVolume = 1f;
         private bool _isPlayingMusic = true;
         private bool _isPlayingSFX = true;
         private bool _isMusicPlayingNow = false;
 
         private AudioClip _currentLevelMusic;
-
-        [SerializeField] private AudioSource _audioSource;
-        [SerializeField] private List<AudioClip> _audioSFXList;
-        [SerializeField] private List<AudioClip> _musicList;
 
         public static AudioHelper Instance { get; private set; }
         public IList<AudioClip> GetSFTList => _audioSFXList;

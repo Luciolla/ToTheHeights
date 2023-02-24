@@ -9,10 +9,7 @@ namespace ToTheHeights
     {
         [SerializeField] private float _startCount = 5f;
 
-        private void Start()
-        {
-            StartCoroutine(StartCounterRutine(_startCount));
-        }
+        private void Start() => StartCoroutine(StartCounterRutine(_startCount));
 
         private IEnumerator StartCounterRutine(float time)
         {

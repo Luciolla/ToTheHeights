@@ -4,16 +4,16 @@ namespace ToTheHeights
 {
     public class GameDataHelper : MonoBehaviour
     {
+        [SerializeField] private float _speedModif = 1.47f;
+        [SerializeField] private int _heightSpeedModif = 150;
+        [SerializeField] private UIHelper _helper;
+
         private int _startLifeCount = 2;
         private int _currentLifeCount = 2;
         private float _startSpeed = 0f;
         private float _startHeight = 15f;
         private float _currentHeight = 15f;
         private float _currentSpeed = 0f;
-
-        [SerializeField] private float _speedModif = 1.47f;
-        [SerializeField] private int _heightSpeedModif = 150;
-        [SerializeField] private UIHelper _helper;
 
         public int SetCurrentLifeCount //todo :\
         {

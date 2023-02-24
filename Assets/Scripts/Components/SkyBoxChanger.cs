@@ -6,13 +6,13 @@ namespace ToTheHeights
 {
     public class SkyBoxChanger : MonoBehaviour
     {
-        private int blendModif = 0;
-        private float _waitTime = 1f;
-        private float[] _blendSpeed = { .006f, .004f, .0032f };
-
         [SerializeField] private Material _skybox;
         [SerializeField] private List<Material> _skyboxList;
         [SerializeField, Range(0, 1)] private float _blend;
+
+        private int blendModif = 0;
+        private float _waitTime = 1f;
+        private float[] _blendSpeed = { .006f, .004f, .0032f };
 
         public float SetBlend
         {

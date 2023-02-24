@@ -5,11 +5,11 @@ namespace ToTheHeights
 {
     public class EffectsPlayer : MonoBehaviour
     {
-        private float _effectPrefabLifeTime = 2f;
-        private IEnumerator rutine;
-
         [SerializeField] private GameObject SmallBlastPrefab;
         [SerializeField] private GameObject BigBlastPrefab;
+
+        private float _effectPrefabLifeTime = 2f;
+        private IEnumerator rutine;
 
         public static EffectsPlayer Instance { get; private set; }
 

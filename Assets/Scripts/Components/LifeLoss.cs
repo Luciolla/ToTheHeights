@@ -6,12 +6,12 @@ namespace ToTheHeights
     [RequireComponent(typeof(CapsuleCollider2D))]
     public class LifeLoss : MonoBehaviour
     {
-        private bool isInvulnerability = false;
-        private bool isBodyActive = true;
-
         [SerializeField] private GameObject _data;
         [SerializeField] private GameObject _rocketBody;
         [SerializeField] private float _invulnerabilityTime = 3f;
+
+        private bool isInvulnerability = false;
+        private bool isBodyActive = true;
 
         private void OnTriggerEnter2D(Collider2D other)
         {

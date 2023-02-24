@@ -9,18 +9,17 @@ namespace ToTheHeights
 {
     public class UIHelper : MonoBehaviour
     {
+        [Header("Список меню")]
+        [SerializeField] private List<GameObject> _menuList = new();
+        [SerializeField] private TMP_Text _heightText;
+        [SerializeField] private TMP_Text _speedText;
+        [SerializeField] private List<Image> _lifeImages;
+
         private int _currentLifeCountView = 2;
         private float _currentHeight = 1f;
         private float _currentSpeed = 0f;
         private bool _isMenuActive = false;
         private bool _isDeathMenuActive = false;
-
-        [Header("Список меню")]
-        [SerializeField] private List<GameObject> _menuList = new();
-
-        [SerializeField] private TMP_Text _heightText;
-        [SerializeField] private TMP_Text _speedText;
-        [SerializeField] private List<Image> _lifeImages;
 
         public static UIHelper Instance { get; private set; }
 

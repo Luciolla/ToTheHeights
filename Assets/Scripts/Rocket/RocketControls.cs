@@ -6,6 +6,9 @@ namespace ToTheHeights
     [RequireComponent(typeof(Rigidbody2D))]
     public class RocketControls : MonoBehaviour
     {
+        [SerializeField] private Transform _transform;
+        [SerializeField] private Vector3 _centerPoint;
+
         private PlayerInput _input;
         private Rigidbody2D _rb;
 
@@ -14,9 +17,6 @@ namespace ToTheHeights
         private float _direction;
         private float _radius = 4f;
         private float _sens = 3f;
-
-        [SerializeField] private Transform _transform;
-        [SerializeField] private Vector3 _centerPoint;
 
         private void Awake()
         {
