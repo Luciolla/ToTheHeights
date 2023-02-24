@@ -4,9 +4,9 @@ namespace ToTheHeights
 {
     public class WithdrawTrigger : MonoBehaviour
     {
-        private Vector3 _startPos;
-
         [SerializeField] private Vector3 _dangerStartPosition;
+
+        private Vector3 _startPos;
 
         private void Start()
         {

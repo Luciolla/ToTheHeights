@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,11 +7,10 @@ namespace ToTheHeights
 {
     public class DangerObjectSpawner : MonoBehaviour
     {
-        private Random _rand = new();
-
         [SerializeField] private List<GameObject> _dangers;
         [SerializeField, Range(1, 10)] private float _spawnTime = 3f;
 
+        private Random _rand = new();
 
         private void Start()
         {

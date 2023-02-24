@@ -3,14 +3,15 @@ using System.Collections;
 
 namespace ToTheHeights
 {
+    [RequireComponent(typeof(CapsuleCollider2D))]
     public class LifeLoss : MonoBehaviour
     {
-        private bool isInvulnerability = false;
-        private bool isBodyActive = true;
-
         [SerializeField] private GameObject _data;
         [SerializeField] private GameObject _rocketBody;
         [SerializeField] private float _invulnerabilityTime = 3f;
+
+        private bool isInvulnerability = false;
+        private bool isBodyActive = true;
 
         private void OnTriggerEnter2D(Collider2D other)
         {
@@ -25,7 +26,7 @@ namespace ToTheHeights
         {
             isInvulnerability = true;
             var time = _invulnerabilityTime;
-
+            
             while (time > 0)
             {
                 _rocketBody.SetActive(isBodyActive);
@@ -43,21 +44,17 @@ namespace ToTheHeights
         private void CheckDeathStatus(GameDataHelper helper) //todo fix this trash before endbuild
         {
             if (helper.SetCurrentLifeCount > 0)
+            {
+                EffectsPlayer.Instance.PlaySmallBlast();
+                AudioHelper.Instance.PlaySound(AudioHelper.Instance.GetSFTList[3]);
                 StartCoroutine(InvulnerabilityRutine());
+            }
             else
             {
-#if UNITY_EDITOR
-                if (Application.isEditor)
-                {
-                    UnityEditor.EditorApplication.isPlaying = false;
-                }
-                else
-                {
-#endif
-                    Application.Quit();
-#if UNITY_EDITOR
-                }
-#endif
+                EffectsPlayer.Instance.PlayBigBlast();
+                AudioHelper.Instance.PlaySound(AudioHelper.Instance.GetSFTList[3]);
+                StartCoroutine(InvulnerabilityRutine());
+                UIHelper.Instance.OpenDeathPanel();
             }
         }
     }

@@ -3,6 +3,7 @@ using Random = System.Random;
 
 namespace ToTheHeights
 {
+    [RequireComponent(typeof(BoxCollider2D))]
     public class DangerRandomSystem : MonoBehaviour
     {
         private Random _random = new();

@@ -1,10 +1,13 @@
-using System;
 using UnityEngine;
 
 namespace ToTheHeights
 {
     public class GameDataHelper : MonoBehaviour
     {
+        [SerializeField] private float _speedModif = 1.47f;
+        [SerializeField] private int _heightSpeedModif = 150;
+        [SerializeField] private UIHelper _helper;
+
         private int _startLifeCount = 2;
         private int _currentLifeCount = 2;
         private float _startSpeed = 0f;
@@ -12,13 +15,10 @@ namespace ToTheHeights
         private float _currentHeight = 15f;
         private float _currentSpeed = 0f;
 
-        [SerializeField] private float _speedModif = 1.45f;
-        [SerializeField] private int _heightSpeedModif = 100;
-
         public int SetCurrentLifeCount //todo :\
         {
-            get { return _currentLifeCount; }
-            set { _currentLifeCount = value; }
+            get => _currentLifeCount; 
+            set => _currentLifeCount = value;
         }
 
         private void Start()
@@ -35,15 +35,15 @@ namespace ToTheHeights
         private void StartGameStats()  //todo - it works, but make it look nice
         {
             _currentLifeCount = _startLifeCount;
-            UIHelper.instance.SetCurrentLifeCountView = _startLifeCount;
-            UIHelper.instance.SetHeight = _startHeight;
-            UIHelper.instance.SetSpeed = _startSpeed;
+            _helper.SetCurrentLifeCountView = _startLifeCount;
+            _helper.SetHeight = _startHeight;
+            _helper.SetSpeed = _startSpeed;
         }  
         private void UpdateGameStats()
         {
-            UIHelper.instance.SetCurrentLifeCountView = _currentLifeCount;
-            UIHelper.instance.SetHeight = _currentHeight;
-            UIHelper.instance.SetSpeed = _currentSpeed;
+            _helper.SetCurrentLifeCountView = _currentLifeCount;
+            _helper.SetHeight = _currentHeight;
+            _helper.SetSpeed = _currentSpeed;
         }
 
         //todo separate to another class

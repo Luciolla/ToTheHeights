@@ -9,19 +9,16 @@ namespace ToTheHeights
     {
         [SerializeField] private float _startCount = 5f;
 
-        private void Start()
-        {
-            StartCoroutine(StartCounterRutine(_startCount));
-        }
+        private void Start() => StartCoroutine(StartCounterRutine(_startCount));
 
         private IEnumerator StartCounterRutine(float time)
         {
-            TryGetComponent(out TMP_Text CounterText);
+            TryGetComponent(out TMP_Text counter);
 
             //just4fun - DoTween :D
             while (time >= 0)
             {
-                CounterText.text = time.ToString();
+                counter.text = time.ToString();
                 DOTween.Sequence()
                     .Append(transform.DOScale(20, .6f))
                     .Append(transform.DOScale(15, .6f));

@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class LifeImageAnimate : MonoBehaviour
 {
+    [SerializeField] private float _startScale = .95f;
+    [SerializeField] private float _endScale = 1.05f;
+    [SerializeField] private float _scaleDuration = .6f;
+
     private void Start()
     {
         StartCoroutine(StartLifeAnimationRutine());
@@ -13,8 +17,8 @@ public class LifeImageAnimate : MonoBehaviour
         while (true)
         {
             DOTween.Sequence()
-                .Append(transform.DOScale(.95f, .6f))
-                .Append(transform.DOScale(1.05f, .6f));
+                .Append(transform.DOScale(_startScale, _scaleDuration))
+                .Append(transform.DOScale(_endScale, _scaleDuration));
             yield return new WaitForSeconds(1f);
         }
     }
